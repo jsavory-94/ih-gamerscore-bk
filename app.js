@@ -14,11 +14,17 @@ const MongoStore = require('connect-mongo')(session);
 
 mongoose.connect(process.env.MONGODB_URI);
 
+mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URI, {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE
+});
+
 var app = express();
 
   app.use(cors({
     credentials: true,
-    origin: ['process.env.CLIENT_URL']
+    origin: ['http://localhost:4200']
   }));
 
 app.use(session({
