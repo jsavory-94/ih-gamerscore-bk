@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
@@ -11,7 +12,7 @@ const auth = require('./routes/auth');
 const session    = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb://localhost/back');
+mongoose.connect(process.env.MONGODB_URI);
 
 var app = express();
 
