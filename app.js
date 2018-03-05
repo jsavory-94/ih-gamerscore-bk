@@ -24,7 +24,7 @@ var app = express();
 
 app.use(cors({
   credentials: true,
-  origin: [process.env.MONGODB_URI]
+  origin: [process.env.CLIENT_URL]
 }));
 
 app.use(session({
