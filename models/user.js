@@ -9,6 +9,12 @@ const userSchema = new Schema({
   timestamps: {
     createdAt: "created_at",
     updatedAt: "updated_at"
+  },
+  scores: {
+    score1: String,
+    score2: String,
+    score3: String,
+    score4: String
   }
 });
 

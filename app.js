@@ -1,3 +1,5 @@
+//import { userInfo } from "os";
+
 require("dotenv").config();
 const cors = require('cors');
 const express = require('express');
@@ -24,7 +26,7 @@ var app = express();
 
 app.use(cors({
   credentials: true,
-  origin: [process.env.CLIENT_URL]
+  origin: [process.env.CLIENT_URL ]
 }));
 
 app.use(session({
@@ -57,7 +59,7 @@ app.use(cookieParser());
 
 app.use('/', index);
 app.use('/auth', auth);
-app.use('/user-stats', userStats);
+app.use('/user-info', userStats);
 
 
 // catch 404 and forward to error handler
