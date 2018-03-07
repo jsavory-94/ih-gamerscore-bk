@@ -18,6 +18,9 @@ router.get('/user/:id', (req, res) => {
     .then((user)=> res.json(user))
   });
 
-
+  router.get('/users', (req, res) => {
+    User.find({})
+    .then((users)=> res.json(users))
+  });
 
 module.exports = router;
