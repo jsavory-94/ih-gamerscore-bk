@@ -4,14 +4,20 @@ var router = express.Router();
 const User = require('../models/user');
 
 router.post('/input-form', (req, res, next) => {
-    const id = req.session.user;
+    const id = req.session.currentUser._id;
     const scores = req.body.scores;
-    console.log(id);
     
-    User.findByIdAndUpdate(id, scores, {new: true}, function(err,user){
+    User.findByIdAndUpdate(id, { $set: { scores: scores } }, {new: true}, function(err,user){
         if (err) return handleError(err);
-        res.json(scores);
+        res.json(user);
     });
 });
+
+router.get('/user/:id', (req, res) => {
+    User.findById(id)
+    .then((user)=> res.json(user))
+  });
+
+
 
 module.exports = router;
