@@ -19,7 +19,7 @@ router.get('/user/:id', (req, res) => {
   });
 
   router.get('/users', (req, res) => {
-    User.find({})
+    User.find({}).sort('-updated_at')
     .then((users)=> res.json(users))
   });
 

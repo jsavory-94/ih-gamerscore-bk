@@ -6,7 +6,11 @@ const User = require('../models/user');
 
 router.get('/me', (req, res, next) => {
   if (req.session.currentUser) {
-    res.json(req.session.currentUser);
+    const userId = req.session.currentUser._id;
+    User.findById(userId)
+      .then(user => {
+        res.json(user);
+      })
   } else {
     res.status(404).json({error: 'not-found'});
   }
